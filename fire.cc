@@ -3,46 +3,45 @@
 
 #include "fire.hh"
 
-#define WIDTH 80
-#define HEIGHT 50
-
 // Index = Row * Width + Column
 
-Fire::Fire()
-    : f_(WIDTH * HEIGHT, 0)
+Fire::Fire(std::size_t width, std::size_t height)
+    : width_(width)
+    , height_(height)
+    , f_(width_ * height_, 0)
 {
-    for (size_t j = 0; j < WIDTH; j++)
+    for (size_t j = 0; j < width_; j++)
     {
-        f_[(HEIGHT - 1) * WIDTH + j] = 36;
+        f_[(height_ - 1) * width_ + j] = 36;
     }
 }
 
 void Fire::start()
 {
-    for (size_t j = 0; j < WIDTH; ++j)
+    for (size_t j = 0; j < width_; ++j)
     {
-        f_[(HEIGHT - 1) * WIDTH + j] = 36;
+        f_[(height_ - 1) * width_ + j] = 36;
     }
 }
 
 
 void Fire::stop()
 {
-    for (size_t j = 0; j < WIDTH; ++j)
+    for (size_t j = 0; j < width_; ++j)
     {
-        f_[(HEIGHT - 1) * WIDTH + j] = 0;
+        f_[(height_ - 1) * width_ + j] = 0;
     }
 }
 
 void Fire::draw()
 {
     //a bit dirty but keep it this way for now
-    for (size_t i = 1; i < HEIGHT - 1; i++)
+    for (size_t i = 1; i < height_ - 1; i++)
     {
-        for (size_t j = 0; j < WIDTH; j++)
+        for (size_t j = 0; j < width_; j++)
         {
-            if (f_[i * WIDTH + j] > 0 && f_[i * WIDTH + j] <= 36)
-                print_flame(f_[i * WIDTH + j]);
+            if (f_[i * width_ + j] > 0 && f_[i * width_ + j] <= 36)
+                print_flame(f_[i * width_ + j]);
             else
                 waddch(stdscr, ' ');
         }
@@ -53,11 +52,11 @@ void Fire::draw()
 
 void Fire::spread()
 {
-    for (size_t i = 0; i < HEIGHT; i++)
+    for (size_t i = 0; i < height_; i++)
     {
-        for (size_t j = 0; j < WIDTH; j++)
+        for (size_t j = 0; j < width_; j++)
         {
-            compute_spread(i * WIDTH + j);
+            compute_spread(i * width_ + j);
         }
     }
 }
@@ -66,9 +65,9 @@ void Fire::compute_spread(size_t src)
 {
     auto random = (std::rand()) & 3;
     auto dst = src - random + 1;
-    if (dst > HEIGHT * WIDTH or dst < WIDTH)
+    if (dst > height_ * width_ or dst < width_)
         return;
-    f_.at(dst - WIDTH) = f_[src] - random;
+    f_.at(dst - width_) = f_[src] - random;
 }
 
 

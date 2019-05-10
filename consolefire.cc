@@ -9,7 +9,7 @@ int main()
     std::system("clear");
     initscr();
     curs_set(0);
-    Fire fire;
+    Fire fire(COLS, LINES);
     fire.start();
     for (int i = 0; i < 1000; i++)
     {
