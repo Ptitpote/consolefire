@@ -8,10 +8,14 @@ int main()
 {
     std::system("clear");
     initscr();
+    noecho();
+    cbreak();
+    timeout(0);
     curs_set(0);
     Fire fire(COLS, LINES);
     fire.start();
-    for (int i = 0; i < 1000; i++)
+    //for (int i = 0; i < 1000; i++)
+    while (getch() != 'a')
     {
         fire.spread();
         wmove(stdscr, 0, 0);
@@ -20,7 +24,7 @@ int main()
         usleep(25000);
     }
     fire.stop();
-    for (int i = 0; i < 100; i++)
+    for (int i = 0; i < 80; i++)
     {
         fire.spread();
         wmove(stdscr, 0, 0);
