@@ -13,6 +13,7 @@ int main()
     timeout(0);
     curs_set(0);
     Fire fire(COLS, LINES);
+    fire.init_colors();
     fire.start();
     //for (int i = 0; i < 1000; i++)
     while (getch() != 'a')
