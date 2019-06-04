@@ -68,10 +68,10 @@ void Fire::print_flame(int flame) {
 
 void Fire::init_colors() {
     start_color();
-    init_pair(1, COLOR_YELLOW, COLOR_BLACK);
-    init_pair(2, COLOR_RED, COLOR_BLACK);
-    init_pair(3, COLOR_MAGENTA, COLOR_BLACK);
-    init_pair(4, COLOR_BLUE, COLOR_BLACK);
-    init_pair(5, COLOR_CYAN, COLOR_BLACK);
-    init_pair(6, COLOR_WHITE, COLOR_BLACK);
+    init_pair(1, COLOR_YELLOW, -1);
+    init_pair(2, COLOR_RED, -1);
+    init_pair(3, COLOR_MAGENTA, -1);
+    init_pair(4, COLOR_BLUE, -1);
+    init_pair(5, COLOR_CYAN, -1);
+    init_pair(6, COLOR_WHITE, -1);
 }

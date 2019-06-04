@@ -8,6 +8,7 @@ int main()
 {
     std::system("clear");
     initscr();
+    use_default_colors();
     noecho();
     cbreak();
     timeout(0);
