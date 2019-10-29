@@ -1,4 +1,4 @@
-CXX = g++
+CXX ?= g++
 CXXFLAGS = -Wall -Wextra -Werror -pedantic -std=c++17 -o consolefire
 LDFLAGS=
 LDLIBS= -lncurses
