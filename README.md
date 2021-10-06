@@ -32,3 +32,6 @@ $ ./consolefire
 
 Once the program is launch, the fire starts automatically.
 To estinguish the fire and exit the program, press 'a'.
+
+
+this is a test
